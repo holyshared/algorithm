@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named merge_sort
+
+# Build rule for target.
+merge_sort: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 merge_sort
+.PHONY : merge_sort
+
+# fast build rule for target.
+merge_sort/fast:
+	$(MAKE) -f CMakeFiles/merge_sort.dir/build.make CMakeFiles/merge_sort.dir/build
+.PHONY : merge_sort/fast
+
+#=============================================================================
 # Target rules for targets named quick_sort
 
 # Build rule for target.
@@ -163,6 +176,33 @@ bubble_sort.c.s:
 	$(MAKE) -f CMakeFiles/bubble_sort.dir/build.make CMakeFiles/bubble_sort.dir/bubble_sort.c.s
 .PHONY : bubble_sort.c.s
 
+merge_sort.o: merge_sort.c.o
+
+.PHONY : merge_sort.o
+
+# target to build an object file
+merge_sort.c.o:
+	$(MAKE) -f CMakeFiles/merge_sort.dir/build.make CMakeFiles/merge_sort.dir/merge_sort.c.o
+.PHONY : merge_sort.c.o
+
+merge_sort.i: merge_sort.c.i
+
+.PHONY : merge_sort.i
+
+# target to preprocess a source file
+merge_sort.c.i:
+	$(MAKE) -f CMakeFiles/merge_sort.dir/build.make CMakeFiles/merge_sort.dir/merge_sort.c.i
+.PHONY : merge_sort.c.i
+
+merge_sort.s: merge_sort.c.s
+
+.PHONY : merge_sort.s
+
+# target to generate assembly for a file
+merge_sort.c.s:
+	$(MAKE) -f CMakeFiles/merge_sort.dir/build.make CMakeFiles/merge_sort.dir/merge_sort.c.s
+.PHONY : merge_sort.c.s
+
 quick_sort.o: quick_sort.c.o
 
 .PHONY : quick_sort.o
@@ -198,11 +238,15 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... merge_sort"
 	@echo "... quick_sort"
 	@echo "... bubble_sort"
 	@echo "... bubble_sort.o"
 	@echo "... bubble_sort.i"
 	@echo "... bubble_sort.s"
+	@echo "... merge_sort.o"
+	@echo "... merge_sort.i"
+	@echo "... merge_sort.s"
 	@echo "... quick_sort.o"
 	@echo "... quick_sort.i"
 	@echo "... quick_sort.s"
