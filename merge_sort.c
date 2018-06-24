@@ -10,14 +10,10 @@ void merge_sort(int len, int nums[]) {
 
   int middle = len / 2;
 
-  printf("len = %d\n", len);
-  printf("middle = %d\n", middle);
-
   merge_sort(middle, nums);
   merge_sort(len - middle, nums + middle);
 
-//  int cloned[middle];
-  int cloned[8];
+  int cloned[middle];
 
   for (int i = 0; i < middle; i++) {
     cloned[i] = nums[i];
@@ -29,8 +25,6 @@ void merge_sort(int len, int nums[]) {
 
   while (left < middle && right < len) {
     if (cloned[left] >= nums[right]) {
-      printf("right = %d\n", right);
-      printf("right_v = %d\n", nums[right]);
       nums[new_pos] = nums[right];
       right++;
     } else {
@@ -41,15 +35,26 @@ void merge_sort(int len, int nums[]) {
   }
 
   while (left < middle) {
-    printf("left = %d\n", left);
-    printf("left_v = %d\n", cloned[left]);
-    printf("new_pos = %d\n", new_pos);
     nums[new_pos] = cloned[left];
     left++;
     new_pos++;
   }
 }
 
+/**
+ * nums=6,5 left=6, right=5
+ * nums=5,5 left > right then
+ * nums=5,6 remain left
+ *
+ * nums=5,6 left=5, right=6
+ * nums=5,6 left < right then
+ * nums=5,6 remain left
+ *
+ * nums=7,9,3,6 left=7,9, right=3,6
+ * nums=3,9,3,6
+ * nums=3,6,7,6
+ * nums=3,6,7,9
+ */
 int main() {
   int nums[] = { 8, 4, 3, 7, 6, 5, 2, 1 };
   size_t len = sizeof(nums) / sizeof(nums[0]);
