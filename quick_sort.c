@@ -3,6 +3,27 @@
 #include "stdbool.h"
 #include "time.h"
 
+int middle_value(int first, int mid, int last) {
+  if (first < mid) {
+    if (mid < last) {
+      return mid;
+    } else if (first > last) {
+      return last;
+    } else {
+      return first;
+    }
+  } else {
+    if (first < last) {
+      return first;
+    } else if (mid > last) {
+      return mid;
+    } else {
+      return last;
+    }
+  }
+}
+
+
 void quick_sort(int first, int last, int nums[]) {
   if (first >= last) {
     return;
@@ -12,8 +33,8 @@ void quick_sort(int first, int last, int nums[]) {
    * first, last間の中間値を利用する
    * first + (last - first) / 2
    */
-  int div = first + (last - first)/2;
-  int base = nums[div];
+  int middle_pos = first + (last - first)/2;
+  int base = middle_value(nums[first], nums[middle_pos], nums[last]);
   int lower = first;
   int upper = last;
 
