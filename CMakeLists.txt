@@ -5,3 +5,4 @@ set(CMAKE_C_STANDARD 99)
 
 add_executable(bubble_sort bubble_sort.c)
 add_executable(quick_sort quick_sort.c)
+add_executable(merge_sort merge_sort.c)
