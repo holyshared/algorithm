@@ -124,6 +124,19 @@ quick_sort/fast:
 .PHONY : quick_sort/fast
 
 #=============================================================================
+# Target rules for targets named liner_search
+
+# Build rule for target.
+liner_search: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 liner_search
+.PHONY : liner_search
+
+# fast build rule for target.
+liner_search/fast:
+	$(MAKE) -f CMakeFiles/liner_search.dir/build.make CMakeFiles/liner_search.dir/build
+.PHONY : liner_search/fast
+
+#=============================================================================
 # Target rules for targets named bubble_sort
 
 # Build rule for target.
@@ -163,6 +176,33 @@ bubble_sort.c.s:
 	$(MAKE) -f CMakeFiles/bubble_sort.dir/build.make CMakeFiles/bubble_sort.dir/bubble_sort.c.s
 .PHONY : bubble_sort.c.s
 
+liner_search.o: liner_search.c.o
+
+.PHONY : liner_search.o
+
+# target to build an object file
+liner_search.c.o:
+	$(MAKE) -f CMakeFiles/liner_search.dir/build.make CMakeFiles/liner_search.dir/liner_search.c.o
+.PHONY : liner_search.c.o
+
+liner_search.i: liner_search.c.i
+
+.PHONY : liner_search.i
+
+# target to preprocess a source file
+liner_search.c.i:
+	$(MAKE) -f CMakeFiles/liner_search.dir/build.make CMakeFiles/liner_search.dir/liner_search.c.i
+.PHONY : liner_search.c.i
+
+liner_search.s: liner_search.c.s
+
+.PHONY : liner_search.s
+
+# target to generate assembly for a file
+liner_search.c.s:
+	$(MAKE) -f CMakeFiles/liner_search.dir/build.make CMakeFiles/liner_search.dir/liner_search.c.s
+.PHONY : liner_search.c.s
+
 quick_sort.o: quick_sort.c.o
 
 .PHONY : quick_sort.o
@@ -199,10 +239,14 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... quick_sort"
+	@echo "... liner_search"
 	@echo "... bubble_sort"
 	@echo "... bubble_sort.o"
 	@echo "... bubble_sort.i"
 	@echo "... bubble_sort.s"
+	@echo "... liner_search.o"
+	@echo "... liner_search.i"
+	@echo "... liner_search.s"
 	@echo "... quick_sort.o"
 	@echo "... quick_sort.i"
 	@echo "... quick_sort.s"
