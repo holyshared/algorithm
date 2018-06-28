@@ -7,7 +7,7 @@ int64_t binary_search(int64_t v, int64_t left, int64_t right, int64_t nums[]) {
     return -1;
   }
 
-  int64_t mid = right - ((right - left) / 2);
+  int64_t mid = left + ((right - left) / 2);
 
   if (nums[mid] > v) {
     // left
