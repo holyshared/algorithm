@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /Users/holyshared/Documents/projects/algorithm
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/Cellar/cmake/3.9.4/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/local/Cellar/cmake/3.9.4/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -137,6 +137,19 @@ quick_sort/fast:
 .PHONY : quick_sort/fast
 
 #=============================================================================
+# Target rules for targets named liner_search
+
+# Build rule for target.
+liner_search: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 liner_search
+.PHONY : liner_search
+
+# fast build rule for target.
+liner_search/fast:
+	$(MAKE) -f CMakeFiles/liner_search.dir/build.make CMakeFiles/liner_search.dir/build
+.PHONY : liner_search/fast
+
+#=============================================================================
 # Target rules for targets named bubble_sort
 
 # Build rule for target.
@@ -175,6 +188,33 @@ bubble_sort.s: bubble_sort.c.s
 bubble_sort.c.s:
 	$(MAKE) -f CMakeFiles/bubble_sort.dir/build.make CMakeFiles/bubble_sort.dir/bubble_sort.c.s
 .PHONY : bubble_sort.c.s
+
+liner_search.o: liner_search.c.o
+
+.PHONY : liner_search.o
+
+# target to build an object file
+liner_search.c.o:
+	$(MAKE) -f CMakeFiles/liner_search.dir/build.make CMakeFiles/liner_search.dir/liner_search.c.o
+.PHONY : liner_search.c.o
+
+liner_search.i: liner_search.c.i
+
+.PHONY : liner_search.i
+
+# target to preprocess a source file
+liner_search.c.i:
+	$(MAKE) -f CMakeFiles/liner_search.dir/build.make CMakeFiles/liner_search.dir/liner_search.c.i
+.PHONY : liner_search.c.i
+
+liner_search.s: liner_search.c.s
+
+.PHONY : liner_search.s
+
+# target to generate assembly for a file
+liner_search.c.s:
+	$(MAKE) -f CMakeFiles/liner_search.dir/build.make CMakeFiles/liner_search.dir/liner_search.c.s
+.PHONY : liner_search.c.s
 
 merge_sort.o: merge_sort.c.o
 
@@ -236,14 +276,18 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... merge_sort"
 	@echo "... quick_sort"
+	@echo "... rebuild_cache"
+	@echo "... liner_search"
 	@echo "... bubble_sort"
 	@echo "... bubble_sort.o"
 	@echo "... bubble_sort.i"
 	@echo "... bubble_sort.s"
+	@echo "... liner_search.o"
+	@echo "... liner_search.i"
+	@echo "... liner_search.s"
 	@echo "... merge_sort.o"
 	@echo "... merge_sort.i"
 	@echo "... merge_sort.s"
