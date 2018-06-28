@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named binrary_search
+
+# Build rule for target.
+binrary_search: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 binrary_search
+.PHONY : binrary_search
+
+# fast build rule for target.
+binrary_search/fast:
+	$(MAKE) -f CMakeFiles/binrary_search.dir/build.make CMakeFiles/binrary_search.dir/build
+.PHONY : binrary_search/fast
+
+#=============================================================================
 # Target rules for targets named merge_sort
 
 # Build rule for target.
@@ -161,6 +174,33 @@ bubble_sort: cmake_check_build_system
 bubble_sort/fast:
 	$(MAKE) -f CMakeFiles/bubble_sort.dir/build.make CMakeFiles/bubble_sort.dir/build
 .PHONY : bubble_sort/fast
+
+binrary_search.o: binrary_search.c.o
+
+.PHONY : binrary_search.o
+
+# target to build an object file
+binrary_search.c.o:
+	$(MAKE) -f CMakeFiles/binrary_search.dir/build.make CMakeFiles/binrary_search.dir/binrary_search.c.o
+.PHONY : binrary_search.c.o
+
+binrary_search.i: binrary_search.c.i
+
+.PHONY : binrary_search.i
+
+# target to preprocess a source file
+binrary_search.c.i:
+	$(MAKE) -f CMakeFiles/binrary_search.dir/build.make CMakeFiles/binrary_search.dir/binrary_search.c.i
+.PHONY : binrary_search.c.i
+
+binrary_search.s: binrary_search.c.s
+
+.PHONY : binrary_search.s
+
+# target to generate assembly for a file
+binrary_search.c.s:
+	$(MAKE) -f CMakeFiles/binrary_search.dir/build.make CMakeFiles/binrary_search.dir/binrary_search.c.s
+.PHONY : binrary_search.c.s
 
 bubble_sort.o: bubble_sort.c.o
 
@@ -277,11 +317,15 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... binrary_search"
 	@echo "... merge_sort"
 	@echo "... quick_sort"
 	@echo "... rebuild_cache"
 	@echo "... liner_search"
 	@echo "... bubble_sort"
+	@echo "... binrary_search.o"
+	@echo "... binrary_search.i"
+	@echo "... binrary_search.s"
 	@echo "... bubble_sort.o"
 	@echo "... bubble_sort.i"
 	@echo "... bubble_sort.s"
