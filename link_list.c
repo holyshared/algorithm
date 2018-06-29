@@ -8,6 +8,10 @@ typedef struct cell {
 } cell;
 
 cell* cl_array_to_list(size_t len, int64_t nums[]) {
+  if (len <= 0) {
+    return NULL;
+  }
+
   cell *r = malloc(sizeof(cell));
   r->value = nums[0];
 
