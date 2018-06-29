@@ -7,7 +7,7 @@ typedef struct cell {
   struct cell *next;
 } cell;
 
-cell* array_to_list(size_t len, int64_t nums[]) {
+cell* cl_array_to_list(size_t len, int64_t nums[]) {
   cell *r = malloc(sizeof(cell));
   r->value = nums[0];
 
@@ -24,20 +24,30 @@ cell* array_to_list(size_t len, int64_t nums[]) {
   return r;
 }
 
+void cl_clean(cell *root) {
+  cell *curr = root;
+
+  while (curr->next != NULL) {
+    cell *temp = curr->next;
+    free(curr);
+    curr = temp;
+  }
+  free(curr);
+}
 
 int main() {
   int64_t nums[] = { 1, 2, 3, 4, 5, 6 };
   size_t len = sizeof(nums) / sizeof(nums[0]);
 
-  cell *l = array_to_list(len, nums);
+  cell *l = cl_array_to_list(len, nums);
   cell *c = l;
 
   while (c != NULL) {
     printf("v = %lld\n", c->value);
     cell *t = c;
     c = c->next;
-    free(t);
   }
+  cl_clean(l);
 
   return EXIT_SUCCESS;
 }
