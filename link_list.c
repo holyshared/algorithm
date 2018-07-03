@@ -28,6 +28,14 @@ cell* cl_array_to_list(size_t len, int64_t nums[]) {
   return r;
 }
 
+cell* cl_add(cell *root, int64_t v) {
+  cell *new_v = malloc(sizeof(cell));
+  new_v->next = root;
+  new_v->value = v;
+
+  return new_v;
+}
+
 void cl_clean(cell *root) {
   cell *curr = root;
 
@@ -39,18 +47,26 @@ void cl_clean(cell *root) {
   free(curr);
 }
 
+void cl_print(cell *root) {
+  cell *c = root;
+
+  while (c->next != NULL) {
+    printf("v = %lld\n", c->value);
+    c = c->next;
+  }
+  printf("v = %lld\n", c->value);
+}
+
 int main() {
   int64_t nums[] = { 1, 2, 3, 4, 5, 6 };
   size_t len = sizeof(nums) / sizeof(nums[0]);
 
   cell *l = cl_array_to_list(len, nums);
-  cell *c = l;
+  cl_print(l);
 
-  while (c != NULL) {
-    printf("v = %lld\n", c->value);
-    cell *t = c;
-    c = c->next;
-  }
+  l = cl_add(l, 7);
+  cl_print(l);
+
   cl_clean(l);
 
   return EXIT_SUCCESS;
