@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named link_list
+
+# Build rule for target.
+link_list: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 link_list
+.PHONY : link_list
+
+# fast build rule for target.
+link_list/fast:
+	$(MAKE) -f CMakeFiles/link_list.dir/build.make CMakeFiles/link_list.dir/build
+.PHONY : link_list/fast
+
+#=============================================================================
 # Target rules for targets named binrary_search
 
 # Build rule for target.
@@ -256,6 +269,33 @@ liner_search.c.s:
 	$(MAKE) -f CMakeFiles/liner_search.dir/build.make CMakeFiles/liner_search.dir/liner_search.c.s
 .PHONY : liner_search.c.s
 
+link_list.o: link_list.c.o
+
+.PHONY : link_list.o
+
+# target to build an object file
+link_list.c.o:
+	$(MAKE) -f CMakeFiles/link_list.dir/build.make CMakeFiles/link_list.dir/link_list.c.o
+.PHONY : link_list.c.o
+
+link_list.i: link_list.c.i
+
+.PHONY : link_list.i
+
+# target to preprocess a source file
+link_list.c.i:
+	$(MAKE) -f CMakeFiles/link_list.dir/build.make CMakeFiles/link_list.dir/link_list.c.i
+.PHONY : link_list.c.i
+
+link_list.s: link_list.c.s
+
+.PHONY : link_list.s
+
+# target to generate assembly for a file
+link_list.c.s:
+	$(MAKE) -f CMakeFiles/link_list.dir/build.make CMakeFiles/link_list.dir/link_list.c.s
+.PHONY : link_list.c.s
+
 merge_sort.o: merge_sort.c.o
 
 .PHONY : merge_sort.o
@@ -317,6 +357,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... link_list"
 	@echo "... binrary_search"
 	@echo "... merge_sort"
 	@echo "... quick_sort"
@@ -332,6 +373,9 @@ help:
 	@echo "... liner_search.o"
 	@echo "... liner_search.i"
 	@echo "... liner_search.s"
+	@echo "... link_list.o"
+	@echo "... link_list.i"
+	@echo "... link_list.s"
 	@echo "... merge_sort.o"
 	@echo "... merge_sort.i"
 	@echo "... merge_sort.s"
